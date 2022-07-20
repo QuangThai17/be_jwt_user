@@ -36,12 +36,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
+    //thaibq
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.cors();
         httpSecurity.csrf().disable()
-                .authorizeRequests().antMatchers("/authenticate", "/registerNewUser","/employees/**","/createNewRole").permitAll()
-                .antMatchers("/delete/{id}/**").hasAuthority("ADMIN")
+                .authorizeRequests().antMatchers("/authenticate", "/registerNewUser","/employees","/createNewRole").permitAll()
+//                .antMatchers("/employees/create/**").hasAuthority("ADMIN")
                 .antMatchers(HttpHeaders.ALLOW).permitAll()
                 .anyRequest().authenticated()
                 .and()
